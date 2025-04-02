@@ -19,7 +19,9 @@
     },
     "contact_form_q8azm4": {
       "type": "contact-form",
-      "settings": {}
+      "settings": {
+        "title": "Contact Us"
+      }
     }
   },
   "order": [
