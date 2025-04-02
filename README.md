@@ -37,15 +37,14 @@ This repository contains a customized Shopify theme, intended for learning, test
 
 1. Clone the repo:
 
-   ```bash
-   git clone https://github.com/your-username/SHOPIFY_THEME_PRACTICE.git
-
-   ```
+```bash
+git clone https://github.com/your-username/SHOPIFY_THEME_PRACTICE.git
+```
 
 2. Install Tailwind (if applicable):
 
 ```bash
-   npm install
+ npm install
 ```
 
 ## Dependencies
