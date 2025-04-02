@@ -1,12 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "featured_collection": "all"
+        "title": "Featured Collection",
+        "featured_collection": "all",
+        "number_of_products_to_show": 4
       }
+    },
+    "contact_form_q8azm4": {
+      "type": "contact-form",
+      "settings": {}
     }
   },
-  "order": ["featured-collection"]
+  "order": [
+    "featured-collection",
+    "contact_form_q8azm4"
+  ]
 }
-// index.json is typically the homepage template for a Shopify theme.
