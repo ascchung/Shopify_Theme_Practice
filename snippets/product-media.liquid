@@ -11,6 +11,9 @@
   {% when 'video' %}
     {{ media | video_tag: controls: true, class: 'w-full h-80 object-cover' }}
 
-  {% else %}
+  {% when 'model' %}
+    {{ media | model_viewer_tag }}
 
+  {% else %}
+    {{ media | media_tag }}
 {% endcase %}
