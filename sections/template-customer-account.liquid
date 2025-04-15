@@ -6,17 +6,20 @@
     {% if number_of_orders > 0 %}
       <div class="w-full my-6 md:my-12">
         <h2 class="text-xl font-bold text-gray-700">Order History</h2>
-        {% paginate customer.orders by 1 %}
+        {% assign orders = customer.orders %}
+        <p>Total Orders: {{ orders | size }}</p>
+
+        {% paginate orders by 1 %}
+          <p>Paginate item count: {{ paginate.items | size }}</p>
+          <pre>{{ paginate | json }}</pre>
           <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {% for order in paginate.items %}
               <div class="relative">
-                <div
-                  class="w-full min-80 bg-gray-200 rounded-md overflow-hidden lg:h-80"
-                >
+                <div class="w-full min-80 bg-gray-200 rounded-md overflow-hidden lg:h-80">
                   {% if order.line_items.first.image %}
                     <img
                       class="w-full h-full object-center object-cover"
-                      src="{{ order.line_items.first.image | img_url: "medium" }}"
+                      src="{{ order.line_items.first.image | img_url: 'medium' }}"
                       alt="{{ order.line_items.first.image.alt }}"
                     >
                   {% else %}
@@ -45,6 +48,7 @@
               </div>
             {% endfor %}
           </div>
+
           {% if paginate.pages > 1 %}
             <div class="max-w-6xl mx-auto mt-8 flex justify-center gap-2">
               {% if paginate.previous %}
@@ -54,7 +58,6 @@
                   >Previous</a
                 >
               {% endif %}
-
               {% for part in paginate.parts %}
                 {% if part.is_link %}
                   <a
@@ -69,7 +72,6 @@
                   </span>
                 {% endif %}
               {% endfor %}
-
               {% if paginate.next %}
                 <a
                   href="{{ paginate.next.url }}"
