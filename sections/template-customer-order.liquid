@@ -74,7 +74,9 @@
             <div class="text-gray-500 mb-4">
               <div>
                 <p>{{ order.shipping_address.address1 }}</p>
-                <p>{{ order.shipping_address.address2 }}</p>
+                {% if order.shipping_address.address2 != blank %}
+                  <p>{{ order.shipping_address.address2 }}</p>
+                {% endif %}
                 <p>{{ order.shipping_address.street }}</p>
                 <p>{{ order.shipping_address.province }}</p>
                 <p>{{ order.shipping_address.city }}</p>
