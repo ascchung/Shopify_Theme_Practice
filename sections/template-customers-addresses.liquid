@@ -1,7 +1,8 @@
-<div class="max-w-6xl mx-auto px-4 py-12">
+<div class="max-w-6xl mx-auto px-4 py-12" x-data="{ new_address: false}">
   <div class="flex flex-col md:flex-row items-center justify-between my-5 gap-4">
     <h1 class="text-2xl font-bold text-gray-700">Addresses</h1>
     <button
+      x-on:click="new_address = true"
       type="button"
       class="text-white font-medium bg-gray-700 hover:bg-gray-900 px-6 py-2"
     >
@@ -14,6 +15,7 @@
     >
   </div>
   <div
+    x-show="new_address"
     class="h-full w-full fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto z-50"
   >
     <div class="relative max-w-md mx-auto bg-white border top-20 p-4">
