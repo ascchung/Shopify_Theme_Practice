@@ -24,6 +24,9 @@
                   >Default</span
                 >
               {% endif %}
+              <div class="my-8 h-full">
+                {{ address | format_address }}
+              </div>
             </div>
           </div>
         {% endfor %}
