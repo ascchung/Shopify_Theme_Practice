@@ -179,7 +179,7 @@
           </button>
           <button
             type="reset"
-            class="w-full font-medium text-white border border-gray-700 px-4 py-2"
+            class="w-full font-medium text-black border border-gray-700 px-4 py-2"
           >
             Cancel
           </button>
@@ -210,12 +210,16 @@
                 </button>
               </div>
             </div>
+            <div
+              class="h-full w-full fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto z-50"
+            ></div>
           </div>
         {% endfor %}
       </div>
     {% endpaginate %}
   </div>
 </div>
+
 <script>
   class CustomerAddress {
     constructor() {
