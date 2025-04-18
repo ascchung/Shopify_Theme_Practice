@@ -1,11 +1,6 @@
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
->
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 
-<script
-  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
-></script>
+<script defer src="{{ 'swiper.min.js' | asset_url }}"></script>
 
 {% assign selected_variant = product.selected_or_first_available_variant %}
 
@@ -33,36 +28,35 @@
   .product__information {
     height: fit-content;
   }
+
+  .product__medias img {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
 </style>
 
 <div class="max-w-6xl mx-auto my-8">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
     <div class="product__medias">
-      <div class="hidden md:block">
-        {% for media in product.media %}
-          <div class="h-100 overflow-hidden p-2">
-            {% render 'product-media', media: media %}
-          </div>
-        {% endfor %}
-      </div>
-      <div class="md:hidden">
-        <div class="swiper h-94">
-          <div class="swiper-wrapper">
-            {% for media in product.media %}
-              <div class="swiper-slide">
-                <div class="h-80 overflow-hidden p-2">
-                  {% render 'product-media', media: media %}
-                </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for media in product.media %}
+            <div class="swiper-slide flex justify-center items-center p-2">
+              <div class="w-full max-w-md aspect-square flex justify-center items-center overflow-hidden lg:ml-5 md:ml-2">
+                {% render 'product-media', media: media %}
               </div>
-            {% endfor %}
-          </div>
-          <div class="swiper-pagination"></div>
-
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
+            </div>
+          {% endfor %}
         </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
+
     <div class="product__information sticky top-5 p-2">
       {% form 'product',
         product,
@@ -263,14 +257,20 @@
 </script>
 
 <script>
-  const swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    pagination: {
-      el: '.swiper-pagination'
-    },
-    navigation: {
-      prevEl: '.swiper-button-prev',
-      nextEl: '.swiper-button-next'
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 10, // space between slides
+        loop: true, // continuous loop
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: {
+          prevEl: '.swiper-button-prev',
+          nextEl: '.swiper-button-next'
+        }
+      });
+    } catch (error) {
+      console.error('Swiper initialization failed:', error);
     }
   });
 </script>
